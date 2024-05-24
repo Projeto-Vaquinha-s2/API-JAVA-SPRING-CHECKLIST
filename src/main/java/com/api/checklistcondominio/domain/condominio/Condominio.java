@@ -1,7 +1,9 @@
 package com.api.checklistcondominio.domain.condominio;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
@@ -9,6 +11,8 @@ import lombok.Setter;
 @Entity(name = "Condominio")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class Condominio {
     @Id
@@ -41,6 +45,7 @@ public class Condominio {
 
 
     }
+
     public void atualizarInformacoes(DadosAtualizacaoCondominio dados) {
         if (dados.nome() != null) {
             this.nome = dados.nome();
