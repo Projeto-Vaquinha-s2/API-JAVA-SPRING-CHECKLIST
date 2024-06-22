@@ -2,7 +2,6 @@ create table registro(
     id bigint not null auto_increment,
     condominio_id bigint not null,
     torre_id bigint not null,
-    foto_path varchar(255),
     data_do_registro datetime not null,
     descricao_problema varchar(230) not null,
     tipo_problema varchar(100) not null,

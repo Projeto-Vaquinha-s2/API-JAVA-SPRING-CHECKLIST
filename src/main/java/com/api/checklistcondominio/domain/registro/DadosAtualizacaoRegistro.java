@@ -9,8 +9,6 @@ public record DadosAtualizacaoRegistro(
         Long idCondominio,
         Long idTorre,
         @NotNull
-        String foto_path,
-        @NotNull
         LocalDateTime data_do_registro,
         @NotNull
         String descricao_problema,

@@ -25,6 +25,8 @@ public class Registro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "condominio_id")
     private Condominio condominio;
@@ -33,7 +35,6 @@ public class Registro {
     @JoinColumn(name = "torre_id")
     private Torre torre;
 
-    private String foto_path;
     private LocalDateTime data_do_registro;
     private String descricao_problema;
 
@@ -42,16 +43,73 @@ public class Registro {
 
     private Boolean ativo;
 
+    public Condominio getCondominio() {
+        return condominio;
+    }
+
+    public void setCondominio(Condominio condominio) {
+        this.condominio = condominio;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Torre getTorre() {
+        return torre;
+    }
+
+    public void setTorre(Torre torre) {
+        this.torre = torre;
+    }
+
+
+    public LocalDateTime getData_do_registro() {
+        return data_do_registro;
+    }
+
+    public void setData_do_registro(LocalDateTime data_do_registro) {
+        this.data_do_registro = data_do_registro;
+    }
+
+    public TipoProblema getTipo_problema() {
+        return tipo_problema;
+    }
+
+    public void setTipo_problema(TipoProblema tipo_problema) {
+        this.tipo_problema = tipo_problema;
+    }
+
+    public String getDescricao_problema() {
+        return descricao_problema;
+    }
+
+    public void setDescricao_problema(String descricao_problema) {
+        this.descricao_problema = descricao_problema;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
+
     public Registro(DadosCadastroRegistro dados, Long condominioId, CondominioRepository condominioRepository, Long torreId, TorreRepository torreRepository) {
         this.condominio = condominioRepository.findById(condominioId)
                 .orElseThrow(() -> new IllegalArgumentException("Condomínio não encontrado"));
         this.torre = torreRepository.findById(torreId)
                 .orElseThrow(() -> new IllegalArgumentException("Torre não encontrada"));
-        this.foto_path = dados.foto_path();
+
         this.data_do_registro = dados.data_do_registro();
         this.tipo_problema = dados.tipo_problema();
         this.descricao_problema = dados.descricao_problema();
-        this.ativo = true;
+        this.ativo = true; // Definindo ativo como true por padrão
     }
 
     public Registro(DadosCadastroRegistro dados) {
@@ -63,7 +121,6 @@ public class Registro {
                 .orElseThrow(() -> new IllegalArgumentException("Condomínio não encontrado"));
         this.torre = torreRepository.findById(torreId)
                 .orElseThrow(() -> new IllegalArgumentException("Torre não encontrada"));
-        this.foto_path = dados.foto_path();
         this.data_do_registro = dados.data_do_registro();
         this.tipo_problema = dados.tipo_problema();
         this.descricao_problema = dados.descricao_problema();

@@ -23,6 +23,5 @@ public record DadosDetalhamentoTorre(
                 torre.getQuantidade_guaritas(),
                 torre.getQuantidade_terracos(),
                 torre.getAtivo());
-
     }
 }

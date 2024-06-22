@@ -1,10 +1,7 @@
 package com.api.checklistcondominio.controller;
 
-import com.api.checklistcondominio.domain.Torre.*;
-import com.api.checklistcondominio.domain.condominio.Condominio;
-import com.api.checklistcondominio.domain.condominio.CondominioRepository;
-import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,11 +11,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
+import com.api.checklistcondominio.domain.Torre.DadosAtualizacaoTorre;
+import com.api.checklistcondominio.domain.Torre.DadosCadastroTorre;
+import com.api.checklistcondominio.domain.Torre.DadosDetalhamentoTorre;
+import com.api.checklistcondominio.domain.Torre.DadosListagemTorre;
+import com.api.checklistcondominio.domain.Torre.Torre;
+import com.api.checklistcondominio.domain.Torre.TorreRepository;
+import com.api.checklistcondominio.domain.condominio.Condominio;
+import com.api.checklistcondominio.domain.condominio.CondominioRepository;
+
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/torre")
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE})
 public class TorreController {
 
     @Autowired

@@ -1,7 +1,23 @@
 package com.api.checklistcondominio.domain.Torre;
 
-public record DadosListagemTorre(Long id, Long condominioId, int numeroTorre, int quantidade_andares) {
+import jakarta.validation.constraints.NotNull;
+
+public record DadosListagemTorre(@NotNull long id,
+                                 Long condominioId,
+                                 @NotNull int numero_torre,
+                                 @NotNull int quantidade_andares,
+                                 @NotNull int quantidade_garagens,
+                                 @NotNull int quantidade_salao_de_festas,
+                                 @NotNull int quantidade_guaritas,
+                                 @NotNull int quantidade_terracos) {
     public DadosListagemTorre(Torre torre){
-        this(torre.getId(), torre.getCondominio().getId(), torre.getNumero_torre(), torre.getQuantidade_andares());
+        this(torre.getId(),
+                torre.getCondominio().getId(),
+                torre.getNumero_torre(),
+                torre.getQuantidade_andares(),
+                torre.getQuantidade_garagens(),
+                torre.getQuantidade_salao_de_festas(),
+                torre.getQuantidade_guaritas(),
+                torre.getQuantidade_terracos());
     }
 }
